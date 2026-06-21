@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+:root {
+  /* --- BudgetWise design tokens --- */
+  /* Paper: warm off-white, never pure white */
+  --bw-paper: #faf8f3;
+  --bw-paper-raised: #ffffff;
+  --bw-ink: #14231d;
+  --bw-ink-soft: #4a5a52;
+  --bw-line: #e2ddd1;
+
+  /* Sage/forest = growth, savings, income */
+  --bw-sage-50: #f1f6f1;
+  --bw-sage-100: #dceadd;
+  --bw-sage-300: #97c2a0;
+  --bw-sage-500: #3f7d54;
+  --bw-sage-600: #2f6342;
+  --bw-sage-700: #234c33;
+  --bw-sage-900: #122b1c;
+
+  /* Coral = spending, alerts */
+  --bw-coral-50: #fdf1ee;
+  --bw-coral-100: #fbe0da;
+  --bw-coral-400: #e8795c;
+  --bw-coral-500: #d85f3f;
+  --bw-coral-600: #b94a2d;
+
+  /* Gold = warnings, highlights */
+  --bw-gold-100: #faf0d4;
+  --bw-gold-400: #d9a635;
+  --bw-gold-600: #a87a1c;
+
+  --background: var(--bw-paper);
+  --foreground: var(--bw-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-paper: var(--bw-paper);
+  --color-paper-raised: var(--bw-paper-raised);
+  --color-ink: var(--bw-ink);
+  --color-ink-soft: var(--bw-ink-soft);
+  --color-line: var(--bw-line);
+
+  --color-sage-50: var(--bw-sage-50);
+  --color-sage-100: var(--bw-sage-100);
+  --color-sage-300: var(--bw-sage-300);
+  --color-sage-500: var(--bw-sage-500);
+  --color-sage-600: var(--bw-sage-600);
+  --color-sage-700: var(--bw-sage-700);
+  --color-sage-900: var(--bw-sage-900);
+
+  --color-coral-50: var(--bw-coral-50);
+  --color-coral-100: var(--bw-coral-100);
+  --color-coral-400: var(--bw-coral-400);
+  --color-coral-500: var(--bw-coral-500);
+  --color-coral-600: var(--bw-coral-600);
+
+  --color-gold-100: var(--bw-gold-100);
+  --color-gold-400: var(--bw-gold-400);
+  --color-gold-600: var(--bw-gold-600);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: var(--bw-line);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--bw-sage-300);
+  color: var(--bw-sage-900);
+}
+
+.bw-grain {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(63, 125, 84, 0.04), transparent 40%),
+    radial-gradient(circle at 80% 0%, rgba(216, 95, 63, 0.03), transparent 35%);
+}
+
+.bw-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.bw-ticker-track {
+  animation: ticker-scroll 32s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-ticker-track {
+    animation: none;
+  }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bw-fade-up {
+  animation: fade-up 0.4s ease-out both;
+}
